@@ -1,19 +1,25 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    public float speed = 0;
+    public float speed = 0f;
+    public float distanceToAdd = 1f;
     
     [SerializeField] float xLimitLeft;
     [SerializeField] float xLimitRight;
 
     
-    void Start()
+
+
+    private void Update()
     {
+        Clamp();
         
+
     }
 
-    void Update()
+    private void Clamp()
     {
         float positionX = transform.position.x;
         
@@ -21,6 +27,18 @@ public class Player : MonoBehaviour
         
         Vector3 newPosition = new Vector3(positionX, transform.position.y, transform.position.z);
         transform.position = newPosition;
+    }
+
+    public void GoRight()
+    {
+        Debug.Log("Droite");
+        transform.Translate( distanceToAdd * speed *  Time.deltaTime, 0f, 0f );
+    }
+
+    public void GoLeft()
+    {
+        Debug.Log("Gauche");
+        transform.Translate( -distanceToAdd * speed *  Time.deltaTime, 0f, 0f );
     }
     
     
