@@ -60,6 +60,16 @@ namespace Managers
             };
         }
         #endregion
+
+        public void Play()
+        {
+            CurrentGameState = GameState.Game;
+        }
+        
+        public void Exit()
+        {
+            Application.Quit();
+        }
         
     }
 }
